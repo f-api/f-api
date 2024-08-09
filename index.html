@@ -7,7 +7,12 @@
 </head>
 <body>
     <script>
-        const weatherOptions = ["Sunny", "Rainy", "Cloudy", "Stormy", "Snowy", "Windy", "Foggy"];
+        const weatherOptions = [
+            "Sunny", "Rainy", "Cloudy", "Stormy", "Snowy", 
+            "Windy", "Foggy", "Hail", "Thunderstorm", "Drizzle", 
+            "Overcast", "Blustery", "Misty", "Hot", "Cold", 
+            "Freezing Rain", "Sleet", "Humid", "Dry", "Partly Cloudy"
+        ];
 
         function getRandomWeather() {
             const randomWeather = [];
@@ -18,7 +23,6 @@
             return randomWeather;
         }
 
-        // 랜덤한 날씨 데이터를 JSON 형태로 표시
         const randomWeather = getRandomWeather();
         document.body.textContent = JSON.stringify(randomWeather);
     </script>
