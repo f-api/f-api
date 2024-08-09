@@ -9,8 +9,10 @@ function getRandomWeather() {
     return randomWeather;
 }
 
-// URL에 /api 경로가 있을 경우, JSON 데이터를 반환합니다.
-if (window.location.pathname === '/api') {
+if (window.location.pathname === '/f-api/api') {
     const randomWeather = getRandomWeather();
     document.body.textContent = JSON.stringify(randomWeather);
+} else {
+    document.getElementById('title').textContent = 'Weather API';
+    document.getElementById('description').textContent = 'This is a simple weather API.';
 }
