@@ -18,5 +18,17 @@
     "Sleet",
     "Humid",
     "Dry",
-    "Partly Cloudy"
+    "Partly Cloudy",
+    "Tornado",
+    "Hurricane",
+    "Sandstorm",
+    "Blizzard",
+    "Lightning",
+    "Scorching",
+    "Frosty",
+    "Drought",
+    "Muggy",
+    "Tropical Storm",
+    "Icy",
+    "Gale"
 ]
