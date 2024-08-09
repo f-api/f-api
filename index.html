@@ -10,12 +10,15 @@
                 "Sunny", "Rainy", "Cloudy", "Stormy", "Snowy", 
                 "Windy", "Foggy", "Hail", "Thunderstorm", "Drizzle", 
                 "Overcast", "Blustery", "Misty", "Hot", "Cold", 
-                "Freezing Rain", "Sleet", "Humid", "Dry", "Partly Cloudy"
+                "Freezing Rain", "Sleet", "Humid", "Dry", "Partly Cloudy",
+                "Tornado", "Hurricane", "Sandstorm", "Blizzard", "Lightning",
+                "Scorching", "Frosty", "Drought", "Muggy", "Tropical Storm",
+                "Icy", "Gale"
             ];
 
             function getRandomWeather() {
                 const randomWeather = [];
-                for (let i = 0; i < 10; i++) {
+                for (let i = 0; i < 31; i++) {
                     const randomIndex = Math.floor(Math.random() * weatherOptions.length);
                     randomWeather.push(weatherOptions[randomIndex]);
                 }
@@ -25,7 +28,6 @@
             const randomWeather = getRandomWeather();
             const jsonString = JSON.stringify(randomWeather, null, 2);
 
-            // 페이지 내용 전체를 JSON으로 덮어쓰기
             document.open();
             document.write(`<pre>${jsonString}</pre>`);
             document.close();
