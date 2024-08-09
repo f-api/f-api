@@ -4,27 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather API v1</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const weatherOptions = [
+                "Sunny", "Rainy", "Cloudy", "Stormy", "Snowy", 
+                "Windy", "Foggy", "Hail", "Thunderstorm", "Drizzle", 
+                "Overcast", "Blustery", "Misty", "Hot", "Cold", 
+                "Freezing Rain", "Sleet", "Humid", "Dry", "Partly Cloudy"
+            ];
+
+            function getRandomWeather() {
+                const randomWeather = [];
+                for (let i = 0; i < 10; i++) {
+                    const randomIndex = Math.floor(Math.random() * weatherOptions.length);
+                    randomWeather.push(weatherOptions[randomIndex]);
+                }
+                return randomWeather;
+            }
+
+            const randomWeather = getRandomWeather();
+            const jsonString = JSON.stringify(randomWeather, null, 2);
+
+            // 페이지 내용 전체를 JSON으로 덮어쓰기
+            document.open();
+            document.write(`<pre>${jsonString}</pre>`);
+            document.close();
+        });
+    </script>
 </head>
 <body>
-    <script>
-        const weatherOptions = [
-            "Sunny", "Rainy", "Cloudy", "Stormy", "Snowy", 
-            "Windy", "Foggy", "Hail", "Thunderstorm", "Drizzle", 
-            "Overcast", "Blustery", "Misty", "Hot", "Cold", 
-            "Freezing Rain", "Sleet", "Humid", "Dry", "Partly Cloudy"
-        ];
-
-        function getRandomWeather() {
-            const randomWeather = [];
-            for (let i = 0; i < 10; i++) {
-                const randomIndex = Math.floor(Math.random() * weatherOptions.length);
-                randomWeather.push(weatherOptions[randomIndex]);
-            }
-            return randomWeather;
-        }
-
-        const randomWeather = getRandomWeather();
-        document.body.textContent = JSON.stringify(randomWeather);
-    </script>
 </body>
 </html>
