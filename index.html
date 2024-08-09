@@ -6,8 +6,21 @@
     <title>Weather API</title>
 </head>
 <body>
-    <h1>Weather API</h1>
-    <p>This is a simple weather API.</p>
-    <script src="script.js"></script>
+    <script>
+        const weatherOptions = ["Sunny", "Rainy", "Cloudy", "Stormy", "Snowy", "Windy", "Foggy"];
+
+        function getRandomWeather() {
+            const randomWeather = [];
+            for (let i = 0; i < 10; i++) {
+                const randomIndex = Math.floor(Math.random() * weatherOptions.length);
+                randomWeather.push(weatherOptions[randomIndex]);
+            }
+            return randomWeather;
+        }
+
+        // 랜덤한 날씨 데이터를 JSON 형태로 표시
+        const randomWeather = getRandomWeather();
+        document.body.textContent = JSON.stringify(randomWeather);
+    </script>
 </body>
 </html>
