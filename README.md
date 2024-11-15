@@ -1,7 +1,11 @@
 <details>
-  <summary>$\textbf{\Huge{\color{#D8B4FF}Cryptocurrency}}$ $\textbf{\Huge{\color{#33CCFF}Chart Widget Samples}}$</summary>
+  <summary>📈 $\textbf{\color{#D8B4FF}Cryptocurrency}$ $\textbf{\Huge{\color{#33CCFF}Chart Widget}}$ $\textbf{\Huge{\color{#00FF00}Samples}}$</summary>
+
+  <br>
   
-  [Customize Your Own Chart Widget Here](https://btc-price-widget.vercel.app/)
+  ### [[ 🚀Customize Your Own Chart Widget *Here!* ]](https://btc-price-widget.vercel.app/)
+
+  <br>
   
   ![Chart](https://btc-price-widget.vercel.app/api/charts?coin=btc&theme=default)
   ![Chart](https://btc-price-widget.vercel.app/api/charts?coin=eth&theme=pastel)
