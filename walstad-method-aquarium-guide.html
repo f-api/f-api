@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>20×20×35 무여과·무환수 어항 가이드</title>
+<style>
+:root{
+  --bg: #0b1020;
+  --panel: #101727;
+  --soft: #0f1a2e;
+  --text: #e6eef7;
+  --muted:#9fb2c9;
+  --accent:#10b981; /* emerald */
+  --accent-2:#38bdf8; /* sky */
+  --warn:#f59e0b;
+  --danger:#ef4444;
+  --ok:#22c55e;
+  --border: #22304a;
+  --chip:#1a2640;
+  --code:#0a1326;
+  --shadow: 0 8px 30px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+html,body{
+  margin:0; padding:0; background:linear-gradient(180deg, #0a0f1e, #0d1530 35%, #0b1020 100%);
+  color:var(--text); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto,
+       "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Helvetica Neue", Arial, sans-serif;
+}
+.container{
+  max-width: 980px; margin: 28px auto; padding: 0 20px 80px;
+}
+.header{
+  background: radial-gradient(1200px 800px at 10% -10%, rgba(56,189,248,.20), transparent 60%),
+              radial-gradient(900px 600px at 100% 0%, rgba(16,185,129,.18), transparent 60%),
+              var(--panel);
+  border:1px solid var(--border);
+  border-radius: 16px; padding: 28px; box-shadow: var(--shadow);
+}
+.header h1{
+  margin:0 0 6px; font-size: clamp(20px, 3.4vw, 34px); letter-spacing:.2px;
+}
+.header p{ margin: 6px 0 0; color: var(--muted) }
+.badges{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px }
+.badge{
+  background: var(--chip); border:1px solid var(--border); color:var(--muted);
+  padding:6px 10px; border-radius:999px; font-size:13px
+}
+
+.grid{
+  display:grid; gap:16px; margin-top:18px;
+  grid-template-columns: repeat(12, 1fr);
+}
+.card{
+  background: var(--panel); border:1px solid var(--border); border-radius:14px; padding:18px;
+  box-shadow: var(--shadow);
+}
+.card h2{ margin:0 0 10px; font-size: 20px }
+.card h3{ margin:14px 0 8px; font-size: 16px; color: var(--accent-2) }
+.small{ font-size: 13px; color: var(--muted) }
+.kicker{ color: var(--accent); font-weight: 600; letter-spacing:.3px; font-size:13px; text-transform:uppercase }
+.hr{ height:1px; background: var(--border); margin: 10px 0 14px }
+ul{ margin:8px 0 0 20px; padding:0 }
+li + li{ margin-top:4px }
+.checklist{ list-style: none; margin:0; padding:0 }
+.checklist li{
+  margin:10px 0; padding:10px 12px; background:var(--soft); border:1px solid var(--border);
+  border-radius:12px; display:flex; align-items:flex-start; gap:10px;
+}
+.checklist input{ margin-top:2px; accent-color: var(--accent) }
+.kv{ display:grid; grid-template-columns: 1fr auto; gap:6px 10px; }
+.kv .k{ color: var(--muted) }
+.kv .v{ font-weight: 600 }
+.note{ background: #0f1f3b; border-left:3px solid var(--accent-2); padding:10px 12px; border-radius:10px; color:#cfe7ff; }
+.warn{ background: #2a1a05; border-left:3px solid var(--warn); color:#ffd8a4; }
+.danger{ background: #2b0f12; border-left:3px solid var(--danger); color:#ffc2c6; }
+.tags{ display:flex; flex-wrap:wrap; gap:6px; margin-top:8px }
+.tag{ font-size:12px; padding:5px 8px; border:1px dashed var(--border); border-radius:999px; color:var(--muted); background:var(--chip) }
+
+.table{
+  border:1px solid var(--border); border-radius:12px; overflow:hidden;
+}
+.table table{ width:100%; border-collapse: collapse; }
+.table th, .table td{ padding:10px 12px; border-bottom:1px solid var(--border); vertical-align: top }
+.table th{ text-align:left; background: #0f1e36; color:#cde7ff }
+.table tr:last-child td{ border-bottom:none }
+.mono{ font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace; background:var(--code); padding:1px 6px; border-radius:6px }
+
+.columns{ columns: 2; column-gap:16px }
+@media (max-width: 900px){ .columns{ columns: 1; } }
+
+.col-4{ grid-column: span 4 }
+.col-6{ grid-column: span 6 }
+.col-8{ grid-column: span 8 }
+.col-12{ grid-column: span 12 }
+
+.footer{ margin-top:28px; color:var(--muted); text-align:center }
+.print-hint{ font-size:12px; color:var(--muted); margin-top:6px }
+
+/* Print */
+@media print{
+  body{ background:#fff; color:#111 }
+  .header, .card{ box-shadow:none; border-color:#dfe3ea; }
+  .badge, .tag{ border-color:#dfe3ea; background:#f5f7fb; color:#374151 }
+  .note, .warn, .danger{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="kicker">최종 픽스 세팅 · 20×20×35 (약 12 L 유효)</div>
+      <h1>무여과·무환수 어항 가이드</h1>
+      <p>방 <strong>천장 형광등</strong>만 사용 · <strong>환수 없음</strong>(보충수만) · <strong>초보자 난이도 최저</strong> 지향</p>
+      <div class="badges">
+        <span class="badge">🐟 생물 과밀 금지</span>
+        <span class="badge">🌿 저광·무CO₂</span>
+        <span class="badge">🧴 수돗물 + 물갈이제</span>
+        <span class="badge">🗓️ 단계적 입수</span>
+      </div>
+    </header>
+
+    <!-- 스펙 요약 -->
+    <section class="grid" aria-label="스펙 요약">
+      <article class="card col-6">
+        <h2>사육 구성(픽스)</h2>
+        <div class="hr"></div>
+        <ul>
+          <li>골든 백운산 <strong>2</strong>마리</li>
+          <li>알비노 피그미 코리도라스 <strong>3</strong>마리</li>
+          <li>생이새우(네오카리디나) <strong>6</strong>마리</li>
+          <li>레이서 스네일(네리트) <strong>1</strong>마리</li>
+        </ul>
+        <div class="note" style="margin-top:10px">표면적(20×20)은 그대로 → <strong>마리수 추가 금지</strong>. 높이 증가 = 완충력 약간 ↑.</div>
+      </article>
+
+      <article class="card col-6">
+        <h2>바닥·하드스케이프(픽스)</h2>
+        <div class="hr"></div>
+        <ul>
+          <li>규사 모래 1–2 mm <strong>3 cm</strong> 두께 (약 <span class="mono">1.2 L / 1.8–2.0 kg</span>)</li>
+          <li>소립 용암석 <strong>3–4</strong>개 (지름 3–5 cm)</li>
+          <li class="small">앞쪽은 빈 모래 놀이터 / 뒤·모서리에 용암석+활착수초</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">모래 단층(코리 수염 보호)</span>
+          <span class="tag">모래 세척 3–5회</span>
+          <span class="tag">사이펀 금지</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- 수초 패키지 -->
+    <section class="grid" aria-label="수초">
+      <article class="card col-12">
+        <h2>수초 패키지(픽스 · 저광/무CO₂)</h2>
+        <div class="hr"></div>
+        <div class="grid">
+          <div class="col-6">
+            <h3>활착/저광</h3>
+            <ul>
+              <li>아누비아스 나나 × <strong>2포트</strong> — 용암석에 묶기</li>
+              <li>미크로소리움(자바펀) × <strong>1포트</strong> — 용암석에 묶기</li>
+              <li>마리모 × <strong>2개</strong> (지름 3–5 cm)</li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <h3>질산 흡수·보강</h3>
+            <ul>
+              <li>아마존 프록비트 × <strong>5주</strong> — 수면 <strong>40–60%</strong>만 덮기</li>
+              <li>포토스(스킨답서스) 줄기 × <strong>3가닥</strong> — <strong>잎은 공기중</strong>/뿌리만 물속</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note" style="margin-top:10px">프록비트 + 포토스가 <strong>무환수 안정화 핵심</strong>. 과덮임 시 일부 제거.</div>
+      </article>
+    </section>
+
+    <!-- 물·조명 -->
+    <section class="grid" aria-label="물·조명">
+      <article class="card col-6">
+        <h2>물 & 보충</h2>
+        <div class="hr"></div>
+        <ul>
+          <li><strong>수돗물 + 물갈이제(염소중화제)</strong>만 사용</li>
+          <li>물은 별도 통에서 <strong>중화 → 접시 위로 천천히</strong> 붓기</li>
+          <li>세팅 <strong>다음날 100% 환수 1회만</strong> 시행(초기 부유물 제거)</li>
+          <li>이후 <strong>환수 없음</strong> · 증발분만 <strong>보충</strong>(항상 탈염소, 실내온도)</li>
+        </ul>
+      </article>
+      <article class="card col-6">
+        <h2>조명 & 수위</h2>
+        <div class="hr"></div>
+        <ul>
+          <li>방 천장 형광등 <strong>6–8시간/일</strong></li>
+          <li>수면을 유리 상단에서 <strong>2–3 cm</strong> 비워 공기층/포토스 고정</li>
+          <li class="small">깊이 증가로 바닥부 광량↓ → 뒷배경에 흰 보드 대면 보완</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- 타임라인 -->
+    <section class="grid" aria-label="타임라인">
+      <article class="card col-12">
+        <h2>세팅 & 입수 타임라인 (픽스)</h2>
+        <div class="hr"></div>
+        <div class="table">
+          <table>
+            <thead>
+              <tr><th style="width:120px">일자</th><th>할 일</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>0일차</strong></td>
+                <td>모래세척→3 cm 깔기→용암석 배치 → 아누비아스/자바펀 묶어 올림, 마리모 투입 → <strong>탈염소수</strong> 절반 채우고 프록비트 띄운 뒤 가득 채움(상단 2–3 cm 남김). 조명 OFF로 하룻밤 안정.</td>
+              </tr>
+              <tr>
+                <td><strong>1일차</strong></td>
+                <td><strong>100% 환수 1회</strong> → 새 <strong>탈염소수</strong>로 동일 수위 채움 → 포토스 3가닥 걸어 뿌리만 물속.</td>
+              </tr>
+              <tr>
+                <td><strong>2–9일차</strong></td>
+                <td>급여 <strong>하지 않음</strong> (또는 사료 한 꼬집/3–4일에 1번, 극소량). 프록비트 덮임률 40–60% 유지.</td>
+              </tr>
+              <tr>
+                <td><strong>10일차</strong></td>
+                <td>생이새우 <strong>2</strong> “테스트 입수” → 48시간 관찰.</td>
+              </tr>
+              <tr>
+                <td><strong>12일차</strong></td>
+                <td>생이새우 <strong>4</strong> 추가 + 레이서 스네일 <strong>1</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>14일차</strong></td>
+                <td>골든 백운산 <strong>2</strong> 입수 → 첫 48시간 <strong>급여 X</strong>, 이후 <span class="mono">2분 규칙</span>으로 극소량.</td>
+              </tr>
+              <tr>
+                <td><strong>21일차</strong></td>
+                <td>피그미 코리 <strong>3</strong> 입수 → 바닥용 미세사료 <strong>격일·소량</strong> 시작.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- 급여/유지 -->
+    <section class="grid" aria-label="급여/유지">
+      <article class="card col-6">
+        <h2>급여 규칙</h2>
+        <div class="hr"></div>
+        <ul>
+          <li><strong>2분 규칙</strong>: 2분 내 전량 섭취할 양만 투여, 남으면 즉시 제거</li>
+          <li>코리 사료: <strong>격일</strong>로 <strong>아주 소량</strong>의 미세 침하형</li>
+          <li>새우·달팽이가 찌꺼기 정리 → <strong>과급여 금지</strong>가 핵심</li>
+        </ul>
+      </article>
+      <article class="card col-6">
+        <h2>유지 루틴</h2>
+        <div class="hr"></div>
+        <ul>
+          <li>매일: 호흡/활동 체크, 프록비트 과밀 시 일부 제거</li>
+          <li>주 1회: 전면 유리만 스폰지로 가볍게 — <strong>바닥은 건드리지 않기</strong></li>
+          <li>2–4주마다: 프록비트·포토스 트리밍, 마리모 굴려 모양 유지</li>
+          <li>보충수: 항상 <strong>탈염소 + 실내온도</strong>로 천천히</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- 응급 & 금지 -->
+    <section class="grid" aria-label="주의">
+      <article class="card col-6">
+        <h2>응급 신호 & 대응</h2>
+        <div class="hr"></div>
+        <div class="warn" style="margin-bottom:10px">
+          수면 헐떡임 · 탁도 급상승 · 이상한 냄새 →
+          <strong>급여 즉시 중단 + 부분환수 20% 1회(탈염소·동일온도)</strong> → 원인(과급여/과덮임 등) 교정
+        </div>
+        <div class="note">한여름 고온 시 산소부족 기미가 보이면 창문 환기 또는 <strong>USB 미니 에어스톤 약하게</strong>(상시 장비는 아님).</div>
+      </article>
+      <article class="card col-6">
+        <h2>이 세팅에서 금지/비추천</h2>
+        <div class="hr"></div>
+        <ul>
+          <li><strong>과급여</strong>, <strong>과밀 입수</strong></li>
+          <li>바닥 <strong>사이펀 청소/뒤집기</strong> (미생물층 파괴)</li>
+          <li>오토싱/플레코/사이아밍 등 대체 “청소물고기” — 12 L 무여과에 <strong>부적합</strong></li>
+          <li>흙/소일 하부층(초보자 리스크↑) — 본 세팅은 <strong>모래 단층</strong></li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- 옵션: 유목 -->
+    <section class="grid" aria-label="옵션">
+      <article class="card col-12">
+        <h2>옵션 · 유목 1개 추가 시</h2>
+        <div class="hr"></div>
+        <div class="columns">
+          <div>
+            <ul>
+              <li>작은 브랜치 유목 <strong>1개</strong> (12–15 cm)만 — 뒤쪽 모서리에 세워 고정</li>
+              <li>삶기 <strong>30–60분</strong> → 불림 <strong>3–7일</strong> → 가라앉지 않으면 용암석으로 추</li>
+              <li>아누비아스/자바펀은 <strong>리좀만</strong> 살짝 묶거나 젤 접착제 소량</li>
+            </ul>
+          </div>
+          <div class="note">
+            찻물색(탄닌)·하얀 생물막은 <strong>정상</strong>, 새우/달팽이가 먹고 1–3주 내 사라짐.
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- 체크리스트 -->
+    <section class="grid" aria-label="체크리스트">
+      <article class="card col-12">
+        <h2>구매 & 세팅 체크리스트</h2>
+        <div class="hr"></div>
+        <ul class="checklist">
+          <li><input type="checkbox" /> <label>규사 모래 1–2 mm <strong>2 kg</strong> (세척 3–5회)</label></li>
+          <li><input type="checkbox" /> <label>용암석 소립 <strong>3–4</strong>개</label></li>
+          <li><input type="checkbox" /> <label>아누비아스 나나 <strong>2포트</strong> · 자바펀 <strong>1포트</strong> · 마리모 <strong>2개</strong></label></li>
+          <li><input type="checkbox" /> <label>아마존 프록비트 <strong>5주</strong> · 포토스 줄기 <strong>3가닥</strong></label></li>
+          <li><input type="checkbox" /> <label>물갈이제(염소중화제) · 식물 핀셋 · 면사/케이블타이 · 접시 · 스폰지 스크래퍼</label></li>
+          <li><input type="checkbox" /> <label>(선택) 브랜치 유목 1개 · (겨울) 25 W 히터</label></li>
+        </ul>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <div>© 최종 세팅 가이드 — 20×20×35 무여과·무환수 (코리 포함)</div>
+      <div class="print-hint">인쇄/저장: 브라우저에서 <strong>Ctrl/Cmd + P</strong></div>
+    </footer>
+  </div>
+</body>
+</html>
+
