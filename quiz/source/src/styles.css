@@ -156,11 +156,15 @@ button {
     box-shadow 160ms ease;
 }
 
-.option-button:not(.option-button-active):not(.option-button-wrong):not(.option-button-correct):hover {
+.option-button:not(:disabled):not(.option-button-active):not(.option-button-wrong):not(.option-button-correct):hover {
   transform: translateY(-1px);
   border-color: var(--accent-border);
   background: var(--surface);
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.option-button:disabled {
+  cursor: default;
 }
 
 .option-button-active {
@@ -282,8 +286,7 @@ button {
   gap: 12px;
 }
 
-.primary-button,
-.ghost-button {
+.action-button {
   width: 100%;
   min-height: 52px;
   padding: 14px 18px;
@@ -300,35 +303,45 @@ button {
     color 160ms ease;
 }
 
-.primary-button {
+.previous-button {
+  border-color: #cbd5e1;
+  background: var(--surface);
+  color: #334155;
+}
+
+.reset-button {
+  border-color: rgba(217, 119, 6, 0.28);
+  background: #fff7ed;
+  color: #b45309;
+}
+
+.next-button {
   border-color: var(--accent);
   background: var(--accent);
   color: #ffffff;
   box-shadow: 0 12px 24px rgba(37, 99, 235, 0.2);
 }
 
-.ghost-button {
-  background: var(--surface);
-  color: var(--text);
-}
-
-.primary-button:hover,
-.ghost-button:hover {
+.action-button:hover {
   transform: translateY(-1px);
 }
 
-.ghost-button:hover {
-  border-color: #cbd5e1;
+.previous-button:hover {
+  border-color: #94a3b8;
   background: var(--surface-muted);
 }
 
-.primary-button:hover {
+.reset-button:hover {
+  border-color: rgba(217, 119, 6, 0.38);
+  background: #ffedd5;
+}
+
+.next-button:hover {
   background: #1d4ed8;
   border-color: #1d4ed8;
 }
 
-.primary-button:disabled,
-.ghost-button:disabled {
+.action-button:disabled {
   opacity: 0.46;
   cursor: not-allowed;
   transform: none;

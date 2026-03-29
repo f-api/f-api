@@ -33,10 +33,14 @@ function App() {
     document.title = appTitle;
   }, [appTitle]);
 
-  useEffect(() => {
+  const resetCurrentQuestionState = () => {
     setSelectedIndex(null);
     setRevealed(false);
     setWrongAttempts([]);
+  };
+
+  useEffect(() => {
+    resetCurrentQuestionState();
   }, [currentIndex]);
 
   const handleOptionClick = (index) => {
@@ -68,6 +72,7 @@ function App() {
 
   const handleRestart = () => {
     setCurrentIndex(0);
+    resetCurrentQuestionState();
   };
 
   return (
@@ -121,6 +126,7 @@ function App() {
                     className={className}
                     onClick={() => handleOptionClick(index)}
                     aria-pressed={isActive}
+                    disabled={revealed}
                   >
                     <span className="option-letter">{LETTERS[index]}</span>
                     <span className="option-text">{option}</span>
@@ -160,7 +166,7 @@ function App() {
         <footer className="footer-row">
           <button
             type="button"
-            className="ghost-button"
+            className="action-button previous-button"
             onClick={handlePrevious}
             disabled={!hasQuizzes || currentIndex === 0}
           >
@@ -169,16 +175,16 @@ function App() {
 
           <button
             type="button"
-            className="ghost-button"
+            className="action-button reset-button"
             onClick={handleRestart}
-            disabled={!hasQuizzes || currentIndex === 0}
+            disabled={!hasQuizzes}
           >
             처음
           </button>
 
           <button
             type="button"
-            className="primary-button"
+            className="action-button next-button"
             onClick={handleNext}
             disabled={!hasQuizzes || !revealed || isLastQuestion}
           >
