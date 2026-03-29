@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import quizSet from "./data/quiz-set.json";
 
@@ -25,11 +26,19 @@ const markdownComponents = {
     return <p>{children}</p>;
   },
   code({ inline, className, children, ...props }) {
-    const content = String(children).replace(/\n$/, "");
+    if (inline) {
+      const content = String(children).replace(/\n$/, "");
+
+      return (
+        <code className={className} {...props}>
+          {content}
+        </code>
+      );
+    }
 
     return (
-      <code className={inline ? className : `${className || ""} code-block`.trim()} {...props}>
-        {content}
+      <code className={`${className || ""} code-block`.trim()} {...props}>
+        {children}
       </code>
     );
   },
@@ -46,6 +55,7 @@ function MarkdownText({ content, className = "" }) {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeHighlight]}
       components={markdownComponents}
       className={className}
     >
