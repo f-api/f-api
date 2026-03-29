@@ -74,7 +74,7 @@
     {
       "id": "spring-transactional",
       "category": "데이터 접근",
-      "title": "`@Transactional`을 메서드에 붙였을 때 기대하는 효과로 가장 적절한 것은?",
+      "title": "다음 코드에서 `@Transactional`의 역할로 가장 적절한 것은?\n\n```java\n@Transactional\npublic void pay() {\n  // ...\n}\n```",
       "prompt": "예외 발생 시 롤백과 정상 종료 시 커밋이라는 기본 흐름을 떠올리면 됩니다.",
       "options": [
         "HTTP 캐시를 자동으로 무효화한다.",

@@ -101,12 +101,59 @@ button {
   gap: 10px;
 }
 
-.question-header h2 {
-  margin: 0;
+.question-title {
   color: var(--text);
   font-size: clamp(1.45rem, 2.8vw, 2.2rem);
   line-height: 1.34;
   letter-spacing: -0.02em;
+}
+
+.markdown-content > * {
+  margin: 0;
+}
+
+.markdown-content > * + * {
+  margin-top: 12px;
+}
+
+.markdown-content p {
+  line-height: inherit;
+}
+
+.markdown-content code {
+  padding: 0.14em 0.42em;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 8px;
+  background: rgba(241, 245, 249, 0.9);
+  color: #0f172a;
+  font-family:
+    "JetBrains Mono",
+    "SFMono-Regular",
+    "SF Mono",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    monospace;
+  font-size: 0.88em;
+}
+
+.markdown-content pre {
+  overflow-x: auto;
+  padding: 14px 16px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 14px;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.markdown-content pre code {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 0.9rem;
+  line-height: 1.7;
 }
 
 .progress-track {
@@ -213,6 +260,10 @@ button {
 
 .option-text {
   line-height: 1.55;
+}
+
+.option-text pre {
+  margin-top: 10px;
 }
 
 .response-row {

@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import quizSet from "./data/quiz-set.json";
 
 const LETTERS = ["A", "B", "C", "D"];
@@ -17,6 +19,40 @@ const quizzes = Array.isArray(quizSet.quizzes)
         typeof quiz?.explanation === "string"
     )
   : [];
+
+const markdownComponents = {
+  p({ children }) {
+    return <p>{children}</p>;
+  },
+  code({ inline, className, children, ...props }) {
+    const content = String(children).replace(/\n$/, "");
+
+    return (
+      <code className={inline ? className : `${className || ""} code-block`.trim()} {...props}>
+        {content}
+      </code>
+    );
+  },
+  pre({ children }) {
+    return (
+      <pre>
+        {children}
+      </pre>
+    );
+  }
+};
+
+function MarkdownText({ content, className = "" }) {
+  return (
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      components={markdownComponents}
+      className={className}
+    >
+      {content}
+    </ReactMarkdown>
+  );
+}
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -100,7 +136,9 @@ function App() {
             </div>
 
             <div className="question-header">
-              <h2>{currentQuiz.title}</h2>
+              <div className="question-title markdown-content">
+                <MarkdownText content={currentQuiz.title} />
+              </div>
             </div>
 
             <div className="option-grid">
@@ -129,7 +167,9 @@ function App() {
                     disabled={revealed}
                   >
                     <span className="option-letter">{LETTERS[index]}</span>
-                    <span className="option-text">{option}</span>
+                    <div className="option-text markdown-content">
+                      <MarkdownText content={option} />
+                    </div>
                   </button>
                 );
               })}
@@ -153,7 +193,9 @@ function App() {
                   <span>해설</span>
                   <strong>{LETTERS[currentQuiz.answerIndex]}</strong>
                 </div>
-                <p>{currentQuiz.explanation}</p>
+                <div className="explanation-text markdown-content">
+                  <MarkdownText content={currentQuiz.explanation} />
+                </div>
               </section>
             ) : null}
           </>
