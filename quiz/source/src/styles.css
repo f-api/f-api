@@ -156,7 +156,7 @@ button {
     box-shadow 160ms ease;
 }
 
-.option-button:hover {
+.option-button:not(.option-button-active):not(.option-button-wrong):not(.option-button-correct):hover {
   transform: translateY(-1px);
   border-color: var(--accent-border);
   background: var(--surface);
