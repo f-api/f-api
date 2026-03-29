@@ -18,7 +18,7 @@
     {
       "id": "spring-boot-annotation",
       "category": "스프링 부트",
-      "title": "`@SpringBootApplication`이 실제로 하는 일에 가장 가까운 설명은?",
+      "title": "다음 코드에서 `@SpringBootApplication`의 의미로 가장 적절한 것은?\n\n```java\n@SpringBootApplication\npublic class QuizApplication {\n  public static void main(String[] args) {\n    SpringApplication.run(QuizApplication.class, args);\n  }\n}\n```",
       "prompt": "하나의 애너테이션처럼 보이지만 내부적으로는 여러 설정을 조합합니다.",
       "options": [
         "`@Configuration`, `@EnableAutoConfiguration`, `@ComponentScan`을 묶은 조합이다.",
