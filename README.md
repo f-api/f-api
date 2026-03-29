@@ -14,7 +14,3 @@
   ![Chart](https://btc-price-widget.vercel.app/api/charts?coin=doge&theme=winter)
   ![Chart](https://btc-price-widget.vercel.app/api/charts?coin=sol&theme=neon)
 </details>
-
-## Static Pages
-
-- Quiz: https://f-api.github.io/f-api/quiz/
