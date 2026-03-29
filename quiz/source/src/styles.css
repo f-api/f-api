@@ -140,10 +140,12 @@ button {
 .markdown-content pre {
   overflow-x: auto;
   margin: 0;
-  border: 1px solid #d7deea;
+  border: 1px solid #3c3f41;
   border-radius: 14px;
-  background: #fbfcfe;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: #2b2b2b;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 36px rgba(15, 23, 42, 0.14);
 }
 
 .markdown-content pre code {
@@ -151,6 +153,8 @@ button {
   padding: 14px 16px;
   font-size: 0.9rem;
   line-height: 1.7;
+  color: #a9b7c6;
+  background: transparent;
   font-family:
     "JetBrains Mono",
     "SFMono-Regular",
@@ -159,6 +163,10 @@ button {
     "Liberation Mono",
     Menlo,
     monospace;
+}
+
+.markdown-content pre code.hljs {
+  background: transparent;
 }
 
 .progress-track {
