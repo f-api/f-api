@@ -1,0 +1,20 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OMC / Claude
+.omc/
+.claude/
+
+# Playwright MCP
+.playwright-mcp/
+
+# Temp scripts
+/tmp/

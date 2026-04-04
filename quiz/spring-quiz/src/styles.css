@@ -1,0 +1,493 @@
+:root {
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  color: #1a1a1a;
+  background-color: #fafafa;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #2563eb;
+  --accent-soft: #eff6ff;
+  --correct: #16a34a;
+  --correct-soft: #f0fdf4;
+  --wrong: #dc2626;
+  --wrong-soft: #fef2f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #fafafa;
+}
+
+button {
+  font: inherit;
+}
+
+/* ── Layout ── */
+
+.page-shell {
+  min-height: 100vh;
+  display: grid;
+  align-items: start;
+  padding: clamp(40px, 8vh, 120px) 20px 32px;
+}
+
+.quiz-panel {
+  width: min(100%, 780px);
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 40px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  display: grid;
+  gap: 24px;
+  animation: panel-enter 200ms ease-out;
+}
+
+.answer-sheet-panel {
+  width: min(100%, 900px);
+}
+
+.answer-sheet-list {
+  display: grid;
+  gap: 24px;
+  width: 100%;
+}
+
+/* ── Answer Sheet ── */
+
+.answer-card-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.answer-card-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.answer-card-title {
+  color: var(--text);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ── Progress ── */
+
+.panel-status {
+  display: block;
+}
+
+.progress-shell {
+  display: grid;
+  gap: 10px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transition: width 200ms ease;
+}
+
+.panel-count {
+  text-align: right;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ── Question ── */
+
+.question-header {
+  display: grid;
+  gap: 8px;
+}
+
+.question-title {
+  color: var(--text);
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* ── Markdown ── */
+
+.markdown-content > * {
+  margin: 0;
+}
+
+.markdown-content > * + * {
+  margin-top: 10px;
+}
+
+.markdown-content > * + ul {
+  margin-top: 0px;
+}
+
+.markdown-content > ul + *,
+.markdown-content > pre + * {
+  margin-top: 10px;
+}
+
+.markdown-content p {
+  line-height: inherit;
+}
+
+.markdown-content :not(pre) > code {
+  padding: 0.15em 0.4em;
+  border-radius: 5px;
+  background: #f3f4f6;
+  color: #1a1a1a;
+  font-family:
+    "JetBrains Mono",
+    "SFMono-Regular",
+    "SF Mono",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    monospace;
+  font-size: 0.88em;
+}
+
+.markdown-content pre {
+  overflow-x: auto;
+  margin: 0;
+  border-radius: 10px;
+  background: #1e1e1e;
+}
+
+.markdown-content pre code {
+  display: block;
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: #d4d4d4;
+  background: transparent;
+  font-family:
+    "JetBrains Mono",
+    "SFMono-Regular",
+    "SF Mono",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    monospace;
+}
+
+.markdown-content pre code.hljs {
+  background: transparent;
+}
+
+/* ── Options ── */
+
+.question-prompt {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.option-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.option-button {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+.option-static {
+  cursor: default;
+}
+
+.option-button:not(:disabled):not(.option-static):not(.option-button-active):not(.option-button-wrong):not(.option-button-correct):hover {
+  border-left-color: var(--accent);
+  background: #fafafa;
+}
+
+.option-button:disabled {
+  cursor: default;
+}
+
+.option-button-active {
+  border-left-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.option-button-wrong {
+  border-left-color: var(--wrong);
+  background: var(--wrong-soft);
+}
+
+.option-button-correct {
+  border-left-color: var(--correct);
+  background: var(--correct-soft);
+}
+
+.option-letter {
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.option-button-active .option-letter {
+  color: var(--accent);
+}
+
+.option-button-correct .option-letter {
+  color: var(--correct);
+}
+
+.option-button-wrong .option-letter {
+  color: var(--wrong);
+}
+
+.option-text {
+  line-height: 1.55;
+}
+
+.option-text pre {
+  margin-top: 10px;
+}
+
+/* ── Response ── */
+
+.response-row {
+  min-height: 20px;
+}
+
+.response-message {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.response-message-correct {
+  color: var(--correct);
+}
+
+.response-message-wrong {
+  color: var(--wrong);
+}
+
+/* ── Explanation ── */
+
+.explanation-block {
+  padding: 20px;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  background: #f0f5ff;
+}
+
+.explanation-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.explanation-heading strong {
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.explanation-block p {
+  color: #374151;
+  line-height: 1.75;
+}
+
+/* ── 오답 분석 section ── */
+
+.markdown-content h4 {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(37, 99, 235, 0.18);
+  color: #94a3b8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.markdown-content h4 + ul {
+  margin-top: 6px;
+}
+
+.markdown-content h4 + ul > li {
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.markdown-content h4 + ul > li strong {
+  color: #475569;
+}
+
+/* ── Empty ── */
+
+.empty-state {
+  min-height: 200px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  background: #f9fafb;
+}
+
+/* ── Footer ── */
+
+.footer-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.action-button {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition:
+    opacity 150ms ease,
+    background 150ms ease,
+    border-color 150ms ease;
+}
+
+.previous-button {
+  border-color: #d1d5db;
+  background: var(--surface);
+  color: #374151;
+}
+
+.previous-button:hover {
+  border-color: #9ca3af;
+  background: #f9fafb;
+}
+
+.reset-button {
+  border-color: rgba(217, 119, 6, 0.25);
+  background: #fffbeb;
+  color: #b45309;
+}
+
+.reset-button:hover {
+  border-color: rgba(217, 119, 6, 0.4);
+  background: #fef3c7;
+}
+
+.next-button {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.next-button:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.action-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Animation ── */
+
+@keyframes panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 640px) {
+  .page-shell {
+    padding: 16px 12px;
+  }
+
+  .quiz-panel {
+    padding: 20px 16px;
+    border-radius: 12px;
+    gap: 20px;
+  }
+
+  .option-button {
+    padding: 12px 14px;
+  }
+
+  .answer-card-header {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-row {
+    grid-template-columns: 1fr;
+  }
+}
